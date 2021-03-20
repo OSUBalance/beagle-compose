@@ -8,9 +8,7 @@ services:
       - anonftp:/var/ftp/beagle:rw
     depends_on:
       - scp
-    environment:
-      BEAGLE_ENV=${ENV}
-    entrypoint: /beagle/beagle/environment/run ${ENV}
+    entrypoint: /beagle/beagle/environment/run
     secrets:
       - ad_pass
       - beagle_db_pass
