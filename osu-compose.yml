@@ -9,7 +9,8 @@ services:
     depends_on:
       - scp
     entrypoint:
-      - /beagle/beagle/bin/beagle foreground
+      - sleep infinity
+#      - /beagle/beagle/bin/beagle foreground
     secrets:
       - ad_pass
       - beagle_db_pass
