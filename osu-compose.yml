@@ -8,7 +8,9 @@ services:
       - anonftp:/var/ftp/beagle:rw
     depends_on:
       - scp
-    entrypoint: . /beagle/beagle/environment/osu-prod.env && /beagle/beagle/bin/beagle foreground
+    environment:
+      BEAGLE_ENV=${ENV}
+    entrypoint: /beagle/beagle/environment/run ${ENV}
     secrets:
       - ad_pass
       - beagle_db_pass
