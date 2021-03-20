@@ -9,7 +9,7 @@ services:
     depends_on:
       - scp
     entrypoint:
-      - /beagle/beagle/bin/beagle foreground
+      - . environment/${ENV}.env && /beagle/beagle/bin/beagle foreground
     secrets:
       - ad_pass
       - beagle_db_pass
