@@ -8,7 +8,8 @@ services:
       - anonftp:/var/ftp/beagle:rw
     depends_on:
       - scp
-    entrypoint: /beagle/beagle/environment/run
+    entrypoint: sleep infinity
+#/beagle/beagle/environment/run
     secrets:
       - ad_pass
       - beagle_db_pass
