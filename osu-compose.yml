@@ -13,6 +13,7 @@ services:
     secrets:
       - beagle_db_pass
     deploy:
+      endpoint_mode: dnsrr
       placement:
         constraints:
           - "node.role==manager"
@@ -36,6 +37,7 @@ services:
     networks:
       - beaglenet
     deploy:
+      endpoint_mode: dnsrr
       placement:
         constraints:
           - "node.role==manager"
