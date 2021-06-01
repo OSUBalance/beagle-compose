@@ -61,7 +61,7 @@ services:
     networks:
       - beaglenet
     deploy:
-      endpoint_mode: dnsrr
+#      endpoint_mode: dnsrr
       placement:
         constraints:
           - "node.role==manager"
