@@ -32,12 +32,12 @@ services:
       -c ssl=on
       -c ssl_cert_file=/tmp/beagle.osumc.edu.crt
       -c ssl_key_file=/tmp/beagle.osumc.edu.key
-    # ports:
-    #   - target: 5432
-    #     published: 5000
-    #     mode: host
+    ports:
+      - target: 5432
+        published: 5000
+        mode: host
     deploy:
-#      endpoint_mode: dnsrr
+      endpoint_mode: dnsrr
       placement:
         constraints:
           - "node.role==manager"
@@ -61,7 +61,7 @@ services:
     networks:
       - beaglenet
     deploy:
-#      endpoint_mode: dnsrr
+      endpoint_mode: dnsrr
       placement:
         constraints:
           - "node.role==manager"
