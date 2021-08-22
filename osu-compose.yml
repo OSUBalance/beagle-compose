@@ -47,10 +47,7 @@ services:
   fe:
     image: osubalance/beagle
     ports:
-      - target: 3000
-        published: 3000
-        protocol: tcp
-        mode: host
+      - "3000:3000"
     volumes:
       - anonftp:/var/ftp/beagle:rw
     depends_on:
@@ -65,7 +62,7 @@ services:
     networks:
       - beaglenet
     deploy:
-      endpoint_mode: dnsrr
+#      endpoint_mode: dnsrr
       placement:
         constraints:
           - "node.role==manager"
