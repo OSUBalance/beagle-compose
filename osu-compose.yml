@@ -58,6 +58,7 @@ services:
     secrets:
       - ad_pass
       - beagle_db_pass
+      - beagle_reports_pass
       - redcap_api_token
     networks:
       - beaglenet
