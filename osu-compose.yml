@@ -54,8 +54,7 @@ services:
       - scp
     environment:
       BEAGLE_ENV: ${BEAGLE_ENV}
-#    entrypoint: /beagle/beagle/environment/foreground
-    entrypoint: "sleep infinity"
+    entrypoint: /beagle/beagle/environment/foreground
     secrets:
       - ad_pass
       - beagle_db_pass
