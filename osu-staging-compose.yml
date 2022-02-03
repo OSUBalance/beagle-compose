@@ -48,10 +48,10 @@ services:
     image: osubalance/beagle
     ports:
       - "3000:3001"
-    volumes:
-      - anonftp:/var/ftp/beagle:rw
-    depends_on:
-      - scp
+#    volumes:
+#      - anonftp:/var/ftp/beagle:rw
+#    depends_on:
+#      - scp
     environment:
       BEAGLE_ENV: ${BEAGLE_ENV}
     entrypoint: /beagle/beagle/environment/foreground
@@ -68,18 +68,18 @@ services:
         constraints:
           - "node.role==manager"
 
-  scp:
-    image: osubalance/scp
-    volumes:
-      - anonftp:/var/data/beagle/data/files:rw
-    ports:
-      - "21:23"
-    networks:
-      - beaglestaging
-    deploy:
-      placement:
-        constraints:
-          - "node.role==manager"
+  # scp:
+  #   image: osubalance/scp
+  #   volumes:
+  #     - anonftp:/var/data/beagle/data/files:rw
+  #   ports:
+  #     - "21:23"
+  #   networks:
+  #     - beaglestaging
+  #   deploy:
+  #     placement:
+  #       constraints:
+  #         - "node.role==manager"
 
 
 volumes:
