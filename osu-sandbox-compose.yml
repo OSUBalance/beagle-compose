@@ -33,10 +33,7 @@ services:
      - scp
    environment:
      BEAGLE_ENV: ${BEAGLE_ENV}
-   entrypoint: /bin/bash
-   tty: true
-   stdin_open: true
-   working_dir: /
+   entrypoint: /beagle/beagle/environment/foreground
    secrets:
      - ad_pass
      - beagle_db_pass
