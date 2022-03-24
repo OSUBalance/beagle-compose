@@ -13,26 +13,6 @@ services:
     secrets:
       - beagle_db_pass
       - beagle_reports_pass
-      - source: beagle.osumc.edu.crt
-        target: /tmp/beagle.osumc.edu.crt
-        mode: 0600
-        uid: "999"
-        gid: "999"
-      - source: beagle.osumc.edu.key
-        target: /tmp/beagle.osumc.edu.key
-        mode: 0600
-        uid: "999"
-        gid: "999"
-      - source: secure_pg_hba.conf
-        target: /var/lib/postgres/data/pg_hba.conf
-        mode: 0600
-        uid: "999"
-        gid: "999"
-    command: >-
-      docker-entrypoint.sh
-      -c ssl=on
-      -c ssl_cert_file=/tmp/beagle.osumc.edu.crt
-      -c ssl_key_file=/tmp/beagle.osumc.edu.key
     ports:
       - target: 5432
         published: 5001
@@ -62,11 +42,6 @@ services:
       - redcap_api_token
     networks:
       - beaglestaging
-    deploy:
-#      endpoint_mode: dnsrr
-      placement:
-        constraints:
-          - "node.role==manager"
 
   scp:
     image: osubalance/scp
@@ -97,10 +72,4 @@ secrets:
   beagle_reports_pass:
     external: true
   redcap_api_token:
-    external: true
-  beagle.osumc.edu.crt:
-    external: true
-  beagle.osumc.edu.key:
-    external: true
-  secure_pg_hba.conf:
     external: true
