@@ -34,6 +34,9 @@ services:
    environment:
      BEAGLE_ENV: ${BEAGLE_ENV}
    entrypoint: /bin/bash
+   tty: true
+   stdin_open: true
+   working_dir: /
    secrets:
      - ad_pass
      - beagle_db_pass
