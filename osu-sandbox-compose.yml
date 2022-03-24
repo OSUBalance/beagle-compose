@@ -17,25 +17,30 @@ services:
       - target: 5432
         published: 5001
         mode: host
+    deploy:
+      endpoint_mode: dnsrr
+      placement:
+        constraints:
+          - "node.role==manager"
 
   fe:
-    image: osubalance/beagle
-    ports:
-      - "3001:3000"
+   image: osubalance/beagle
+   ports:
+     - "3001:3000"
    volumes:
      - anonftp:/var/ftp/beagle:rw
    depends_on:
      - scp
-    environment:
-      BEAGLE_ENV: ${BEAGLE_ENV}
-    entrypoint: /beagle/beagle/environment/foreground
-    secrets:
-      - ad_pass
-      - beagle_db_pass
-      - beagle_reports_pass
-      - redcap_api_token
-    networks:
-      - beaglestaging
+   environment:
+     BEAGLE_ENV: ${BEAGLE_ENV}
+   entrypoint: /beagle/beagle/environment/foreground
+   secrets:
+     - ad_pass
+     - beagle_db_pass
+     - beagle_reports_pass
+     - redcap_api_token
+   networks:
+     - beaglestaging
 
   scp:
     image: osubalance/scp
@@ -45,6 +50,10 @@ services:
       - "21:23"
     networks:
       - beaglestaging
+    deploy:
+      placement:
+        constraints:
+          - "node.role==manager"
 
 
 volumes:
